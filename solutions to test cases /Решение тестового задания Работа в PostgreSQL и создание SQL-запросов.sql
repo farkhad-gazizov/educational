@@ -38,10 +38,13 @@ calendar_at - дата входа в мобильное приложение
 
 -- Решение Задачи 3.
 
-select
-    date_trunc('month', calendar_at) as month,
-    count(distinct id)
-from clients
-group by date_trunc('month', calendar_at)
-order by month;
+with cte as (
+    select
+        date_trunc('month', calendar_at),
+        count(distinct id) as cnt
+    from clients
+    group by date_trunc('month', calendar_at)
+)
+select avg(cnt)
+from cte;
 
