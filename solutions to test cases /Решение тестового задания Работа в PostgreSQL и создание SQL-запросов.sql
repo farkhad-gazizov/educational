@@ -22,7 +22,7 @@ order by last_nm;
 
 select
     date(start_dttm) as date,
-    (count(*) filter (where dozv_flg=1)) :: numeric / count(*) as sla
+    (count(*) filter (where dozv_flg=1)) :: numeric / (count(*) filter (where dozv_flg in (0,1)) as sla
 from calls
 where date >= '2020-10-01' and dozv_flg is not null
 group by date
