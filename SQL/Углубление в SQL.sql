@@ -136,5 +136,3 @@ from film_new ;
 --ЗАДАНИЕ №7 
 --Удалите таблицу film_new
 drop table film_new ;
-
-
